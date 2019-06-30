@@ -4,3 +4,4 @@ content/data/*
 content/images/*
 .env
 deploy_key
+secrets.tar
