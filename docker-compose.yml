@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
 
   ghost:
-    image: patrixr/tronica:0.1
+    image: patrixr/tronica:latest
     restart: always
     ports:
       - 2368:2368

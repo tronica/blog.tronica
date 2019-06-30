@@ -1,0 +1,19 @@
+language: node_js
+services:
+- docker
+before_install:
+- openssl aes-256-cbc -K $encrypted_3eb3d26b78a7_key -iv $encrypted_3eb3d26b78a7_iv
+  -in .env.enc -out .env -d
+- openssl aes-256-cbc -K $encrypted_3eb3d26b78a7_key -iv $encrypted_3eb3d26b78a7_iv
+  -in deploy_key.enc -out deploy_key -d
+- chmod 600 ./deploy_key
+- eval "$(ssh-agent -s)"
+- DISPLAY=":0.0" SSH_ASKPASS="/tmp/askpass" setsid ssh-add ./deploy_key </dev/null
+script:
+- docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
+- docker build . -t patrixr/tronica
+- docker push patrixr/tronica
+- echo "${DOCKER_HOST}"
+- docker-compose down
+- docker-compose pull
+- docker-compose up -d

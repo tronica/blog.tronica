@@ -3,3 +3,4 @@ content/apps/*
 content/data/*
 content/images/*
 .env
+deploy_key
