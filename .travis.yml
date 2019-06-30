@@ -8,6 +8,10 @@ before_install:
 - chmod 600 ./deploy_key
 - eval "$(ssh-agent -s)"
 - DISPLAY=":0.0" SSH_ASKPASS="/tmp/askpass" setsid ssh-add ./deploy_key </dev/null
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
 script:
 - echo "$(docker-compose -v)"
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
@@ -18,6 +22,7 @@ script:
 - docker-compose -H $REMOTE_HOST pull
 - docker-compose -H $REMOTE_HOST up -d
 env:
+  - DOCKER_COMPOSE_VERSION=1.24.1
   global:
   - secure: ZwJ9JNYC5pxETifo07X9xMCbmXwGcPpkcZ/Lj+TGZ/2R/uDTizP7oVO7VAbOxN3zoqDRrMnZlhFr0FweNpzr/DHeak3cKsTi6Nu9jz20nb+5NiZxeQz5FoUwwM1dbsvL/Hkc+CvMYvQ6QNVtll5/RV1Oa/GT7jlnTXhp5DZqgQC6hy7/0rQkZ1GmHAyaO8CISP4xUYiRPbCQA20l/97sB0QAO0mpdunXG+L9EgHr+knR8zUsmK1ieQGvIgzpVTZbznTwn9rZ8Hz4rrJt08bKyZCuSZyBrHlKscQR6OskXvvyRUjEJb5989C3hMViKlYdb8YxhccJgiVEdZw74Z4rQtD22a//wLpVcAYTAUF3Fz4CdebmWzgzTIZ2IspzOlJwU1taj2pKsokrs7slXfQuxSGRrhZi4FVzdFOeFN67g6EXOdnvoZi5UB+TsVBQdn2qSDdp3+4IuXbzCOwG7Vfm949jEcyK3j+LL1udVn8UFZD1Dh4RJKDzwAaTvuoTfGNIbJE+rTqqQaoh9tPZo6oMc4hoMFxnWmAPWYFLq1cBEzSo9UPB/TP2zC8AYRJD+ncizjAeWRflXB0IlSD6McwSsj7tPfWr28cEya4PVcPV5Q2Qhj6hdZsWVXoyOn/pfqV+DuR79BDWxJa3BoRCUy7Ef7jfraXkJi4enjXzCSdqkoE=
   - secure: dc9sjXHmHbYpZakzf9EkCScOllRNI4r1hlsp/esQCKBo/knHvYV5gbuzsHRN6suO2iVOYQAYxzIyyL5xaiQa2rYKYoBnw2exVcFJPPhmWxJ4uwFxRDId6MoXEErOjx+MOCz61nSn2wArxELlHdH3nr0v2i2saD5caTJ9tVkJTDA+divbDUdG0Z4NceUdpT/4kL1fZKSuAO7WxvEk7mgxrIPWtrWPWqjbHZcInbUVoEABMYcTQKEHSPzh9L9VKy6MtUqFJi2IjU4atDe7J8hdWGmziZstONKnvRO5fh3hJr96fXOgdvuvfQp+GQujYg34e9aUswG8nO7cujk4Yw5zRGLItgJxP8THQIkeNNgcnPhkHWsQCd2z/jWxvg5qWJkN9L2WDIjWfCFpMgBN7Bz4bsDgbuskSLFZ54UELCNJb68sL0HeEwdLxET39gl0tt4nM6IWSpi8QJOgt/paUe7x2ycWAIplfOWxgy7C3f2wHsJZYFO4wacrTbkzPRM1M+EkP0A1mHCsAn1P7VSzKOBkZE2h+S86eER+hTD7KUiRrv9+84WRVhINEPy4dCd5bKT9I4U6MglfXy99I8/AO2nD2MFO/4YJ2XbFa1aucCSetMDE6aOSyuu45J8Ak5uNO9axh+QNcbZq+F014O4qvn/nvU+Q4+QtCBOCBhD/jx5Czvo=
