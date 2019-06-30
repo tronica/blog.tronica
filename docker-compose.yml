@@ -1,8 +1,19 @@
----
 version: "3.7"
 services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql
+    volumes:
+      - /opt/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: tronica_blog
+      MYSQL_USER: tronica
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
   ghost:
-    image: patrixr/tronica:latest
+    image: patrixr/tronica:0.1
     restart: always
     ports:
       - 2368:2368
@@ -12,15 +23,5 @@ services:
       database__connection__user: tronica
       database__connection__password: ${DB_PASSWORD}
       database__connection__database: tronica_blog
-
- mysql:
-  image: mysql:5.7
-  restart: always
-  container_name: mysql
-  volumes:
-    - mysql-volume:/var/lib/mysql
-  environment:
-    MYSQL_DATABASE: tronica_blog
-    MYSQL_USER: tronica
-    MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-    MYSQL_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - mysql
