@@ -9,6 +9,7 @@ before_install:
 - eval "$(ssh-agent -s)"
 - DISPLAY=":0.0" SSH_ASKPASS="/tmp/askpass" setsid ssh-add ./deploy_key </dev/null
 script:
+- export $(cat .env | xargs)
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker build . -t patrixr/tronica
 - docker push patrixr/tronica
