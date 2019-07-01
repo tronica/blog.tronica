@@ -37,15 +37,15 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./server/nginx:/etc/nginx/conf.d
-      - ./server/certbot/conf:/etc/letsencrypt
-      - ./server/certbot/www:/var/www/certbot
+      - /opt/nginx/websites:/etc/nginx/conf.d
+      - /opt/nginx/certbot/conf:/etc/letsencrypt
+      - /opt/nginx/certbot/www:/var/www/certbot
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   certbot:
     image: certbot/certbot
     restart: always
     volumes:
-      - ./server/certbot/conf:/etc/letsencrypt
-      - ./server/certbot/certbot/www:/var/www/certbot
+      - /opt/nginx/certbot/conf:/etc/letsencrypt
+      - /opt/nginx/certbot/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
