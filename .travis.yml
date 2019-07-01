@@ -23,7 +23,7 @@ script:
 - echo "Pushing to $REMOTE_HOST"
 - docker-compose -H $REMOTE_HOST down
 - docker-compose -H $REMOTE_HOST pull
-- docker-compose -H $REMOTE_HOST up certbot -d
+- docker-compose -H $REMOTE_HOST up -d certbot
 - docker-compose -H $REMOTE_HOST up -d
 env:
   global:
