@@ -17,7 +17,7 @@ before_install:
 - sudo mv docker-compose /usr/local/bin
 script:
 - echo "$(docker-compose -v)"
-- scp -p ./server/nginx/blog.conf $REMOTE_HOST:/opt/nginx/websites
+- scp -rp ./nginx/websites/* $REMOTE_HOST:/opt/nginx/websites
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker build . -t patrixr/tronica
 - docker push patrixr/tronica
