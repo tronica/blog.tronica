@@ -23,8 +23,7 @@ script:
 - echo "Pushing to $REMOTE_HOST"
 - docker-compose -H "ssh://$REMOTE_HOST" down
 - docker-compose -H "ssh://$REMOTE_HOST" pull
-- docker-compose -H "ssh://$REMOTE_HOST" up -d certbot
-- docker-compose -H "ssh://$REMOTE_HOST" up -d mysql ghost nginx
+- docker-compose -H "ssh://$REMOTE_HOST" up -d
 env:
   global:
   - DOCKER_COMPOSE_VERSION=1.24.1
