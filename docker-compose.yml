@@ -48,6 +48,8 @@ services:
     restart: always
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
+    volumes_from:
+      - nginx-proxy:rw
     volumes:
       - /opt/nginx/certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
