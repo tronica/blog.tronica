@@ -17,8 +17,6 @@ before_install:
 - sudo mv docker-compose /usr/local/bin
 script:
 - echo "$(docker-compose -v)"
-- scp -rp ./nginx/websites/* $REMOTE_HOST:/opt/nginx/websites
-- ssh $REMOTE_HOST 'bash -s' < nginx/init-letsencrypt.sh
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker build . -t patrixr/tronica
 - docker push patrixr/tronica
