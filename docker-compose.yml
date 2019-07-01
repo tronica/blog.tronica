@@ -22,7 +22,7 @@ services:
     ports:
       - "2368:2368"
     environment:
-      VIRTUAL_HOST: *.tronica.io
+      VIRTUAL_HOST: "*.tronica.io"
       database__client: mysql
       database__connection__host: mysql
       database__connection__user: tronica
