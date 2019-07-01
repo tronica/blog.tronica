@@ -1,4 +1,5 @@
 version: "3.3"
+
 services:
   mysql:
     image: mysql:5.7
@@ -43,6 +44,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /opt/nginx/certs:/etc/nginx/certs
       - /opt/nginx/vhost.d:/etc/nginx/vhost.d
+      - /opt/nginx/html:/usr/share/nginx/html
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -53,3 +55,4 @@ services:
       - /opt/nginx/vhost.d:/etc/nginx/vhost.d
       - /opt/nginx/certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /opt/nginx/html:/usr/share/nginx/html
