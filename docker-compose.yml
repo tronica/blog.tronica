@@ -24,6 +24,9 @@ services:
       - "2368:2368"
     environment:
       VIRTUAL_HOST: "*.tronica.io"
+      VIRTUAL_PORT: "2368"
+      LETSENCRYPT_HOST: "*.tronica.io"
+      LETSENCRYPT_EMAIL: "patrixr.dev@gmail.com"
       database__client: mysql
       database__connection__host: mysql
       database__connection__user: tronica
@@ -34,6 +37,7 @@ services:
 
   nginx-proxy:
     image: jwilder/nginx-proxy
+    container_name: nginx-proxy
     restart: always
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
@@ -51,6 +55,7 @@ services:
     restart: always
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
+      DEFAULT_EMAIL: "patrixr.dev@gmail.com"
     volumes:
       - /opt/nginx/vhost.d:/etc/nginx/vhost.d
       - /opt/nginx/certs:/etc/nginx/certs:rw
