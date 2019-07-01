@@ -23,9 +23,9 @@ services:
     ports:
       - "2368:2368"
     environment:
-      VIRTUAL_HOST: "*.tronica.io"
+      VIRTUAL_HOST: "tronica.io,www.tronica.io,blog.tronica.io"
       VIRTUAL_PORT: "2368"
-      LETSENCRYPT_HOST: "*.tronica.io"
+      LETSENCRYPT_HOST: "tronica.io,www.tronica.io,blog.tronica.io"
       LETSENCRYPT_EMAIL: "patrixr.dev@gmail.com"
       database__client: mysql
       database__connection__host: mysql
