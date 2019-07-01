@@ -41,15 +41,13 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /opt/nginx/certs:/etc/nginx/certs
+      - /opt/nginx:/etc/nginx:rw
 
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     restart: always
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
-    volumes_from:
-      - nginx-proxy:rw
     volumes:
-      - /opt/nginx/certs:/etc/nginx/certs:rw
+      - /opt/nginx:/etc/nginx:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
