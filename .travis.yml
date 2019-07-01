@@ -16,7 +16,7 @@ before_install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 script:
-- echo "MaxSessions 30" >>  /etc/ssh/sshd_config)
+- echo "MaxSessions 30" >> /etc/ssh/sshd_config
 - service ssh restart
 - echo "$(docker-compose -v)"
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
