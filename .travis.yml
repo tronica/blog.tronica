@@ -24,7 +24,7 @@ script:
 - docker-compose -H $REMOTE_HOST down
 - docker-compose -H $REMOTE_HOST pull
 - docker-compose -H $REMOTE_HOST up -d certbot
-- docker-compose -H $REMOTE_HOST up -d
+- docker-compose -H $REMOTE_HOST up -d mysql ghost nginx
 env:
   global:
   - DOCKER_COMPOSE_VERSION=1.24.1
