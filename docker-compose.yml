@@ -27,6 +27,11 @@ services:
       VIRTUAL_PORT: "2368"
       LETSENCRYPT_HOST: "tronica.io,www.tronica.io,blog.tronica.io"
       LETSENCRYPT_EMAIL: "patrixr.dev@gmail.com"
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET: ${GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET}
+      GHOST_STORAGE_ADAPTER_S3_ENDPOINT: ${GHOST_STORAGE_ADAPTER_S3_ENDPOINT}
       database__client: mysql
       database__connection__host: mysql
       database__connection__user: tronica

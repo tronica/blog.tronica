@@ -7,7 +7,7 @@
       "secretAccessKey": "AWS_SECRET_ACCESS_KEY",
       "region": "AWS_DEFAULT_REGION",
       "bucket": "GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET",
-      "assetHost": "YOUR_OPTIONAL_CDN_URL (See note 1 below)"
+      "assetHost": "GHOST_STORAGE_ADAPTER_S3_ENDPOINT="
     }
   },
   "server": {
