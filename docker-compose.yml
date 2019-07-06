@@ -32,6 +32,7 @@ services:
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
       GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET: ${GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET}
       GHOST_STORAGE_ADAPTER_S3_ENDPOINT: ${GHOST_STORAGE_ADAPTER_S3_ENDPOINT}
+      GHOST_STORAGE_ADAPTER_S3_ASSET_HOST: ${GHOST_STORAGE_ADAPTER_S3_ASSET_HOST}
       database__client: mysql
       database__connection__host: mysql
       database__connection__user: tronica
