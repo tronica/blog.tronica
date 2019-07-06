@@ -54,8 +54,8 @@ class Store extends _ghostStorageBase2.default {
 
     // Compatible with the aws-sdk's default environment variables
 
-    this.accessKeyId = accessKeyId;
-    this.secretAccessKey = secretAccessKey;
+    this.accessKeyId = process.env.AWS_ACCESS_KEY_ID || accessKeyId;
+    this.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY || secretAccessKey;
     this.region = process.env.AWS_DEFAULT_REGION || region;
 
     this.bucket = process.env.GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET || bucket;
