@@ -21,7 +21,7 @@
     </section>
 
     {{#get 'authors' limit='all' include='count.posts' order='count.posts desc'}}
-      <div class="post-feed">
+      <div class="authors post-feed">
         {{#foreach authors}}
           <article class="post-card {{#unless profile_image}} no-image{{/unless}}">
             {{#if profile_image}}
