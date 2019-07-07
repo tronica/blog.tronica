@@ -8,17 +8,13 @@
 
 &nbsp;
 
-<br>
-<h3> Powered by Ghost </h3>
+---
+
+# Powered by Ghost
+
 <p align="center">
     <img src="https://user-images.githubusercontent.com/120485/43994697-62e2bdc2-9d99-11e8-94fc-021ab9756f33.gif" width="800" />
 </p>
-
-<br>
-
-&nbsp;
-
----
 
 # Quickstart
 
