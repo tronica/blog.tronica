@@ -16,7 +16,7 @@ const customProperties = require('postcss-custom-properties');
 const easyimport = require('postcss-easy-import');
 
 function serve(done) {
-    livereload.listen();
+    livereload.listen({ port: 35728 });
     done();
 }
 

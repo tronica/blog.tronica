@@ -1,15 +1,5 @@
 {
   "url": "http://localhost:2368",
-  "storage": {
-    "active": "s3",
-    "s3": {
-      "accessKeyId": "AWS_ACCESS_KEY_ID",
-      "secretAccessKey": "AWS_SECRET_ACCESS_KEY",
-      "region": "AWS_DEFAULT_REGION",
-      "bucket": "GHOST_STORAGE_ADAPTER_S3_PATH_BUCKET",
-      "assetHost": "GHOST_STORAGE_ADAPTER_S3_ENDPOINT="
-    }
-  },
   "server": {
     "host": "127.0.0.1",
     "port": 2368
