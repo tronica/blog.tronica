@@ -5,11 +5,16 @@ RUN mkdir /sample
 WORKDIR /sample
 
 ADD package.json .
-RUN ["npm", "i", "--only=production"]
 
+RUN apk --no-cache --virtual build-dependencies add \
+    python \
+    make \
+    g++ \
+    && npm install --only=production\
+    && apk del build-dependencies
 
 # Stage-2 final image
-FROM node:alpine
+FROM node:12-alpine
 
 WORKDIR /app
 COPY . .
