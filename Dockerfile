@@ -1,5 +1,5 @@
 # Stage-1 dependencies
-FROM node:latest as dep
+FROM node:12-alpine as dep
 
 RUN mkdir /sample
 WORKDIR /sample
